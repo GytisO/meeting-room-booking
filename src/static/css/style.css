@@ -1,0 +1,45 @@
+h1 {
+  /* background: red; */
+  /* color: red; */
+}
+
+p {
+  color: green;
+}
+
+.content {
+  margin-right: auto;
+  margin-left: auto;
+  width: 1000px;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+.card {
+  margin: 10px;
+}
+
+.card-img-top {
+  max-height: 200px;
+  object-fit: cover;
+  width: 100%;
+  height: auto;
+}
+
+a {
+  color: white;
+  text-decoration: none;
+  background-color: transparent;
+}
+
+a:hover {
+  color: white;
+  text-decoration: none;
+}
+.jumbotron {
+  background-color: green;
+  background-size: cover;
+}
+.jumbotron h1 {
+  color: white;
+}

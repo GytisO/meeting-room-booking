@@ -1,0 +1,14 @@
+<!doctype html>
+{% load static %}
+<html lang="en">
+    {% include 'css.html' %}
+    <body>
+    {% include 'navbar.html' %}
+        <div class="container">
+            <div class="jumbotron">
+                {% block content %}
+                    <h1> {{ title }}</h1>
+                {% endblock content  %}
+            </div>
+        </div>
+    {% include 'footer.html' %}

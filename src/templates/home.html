@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+{% block content %}
+    <h1>
+    {{ title }}
+    </h1>
+    {{ user }}
+    {{ user.is_authenticated }}
+    {% for item in my_list %}
+        <li>
+        {{ item }}
+        </li>
+    {% endfor %}
+{% endblock content %}
