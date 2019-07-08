@@ -1,0 +1,9 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>Are you sure you want to delete {{ object.room_number }}?</h1>
+<div class=container>
+    <button type="button" class="btn btn-danger">Yes</button>
+    <button type="button" class="btn btn-success">Cancel</button>
+</div>
+{% endblock content %}
