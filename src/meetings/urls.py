@@ -26,5 +26,6 @@ urlpatterns = [
     path('', home_page),
     path('meeting-admin/', admin.site.urls),
     path('rooms/create/', room_create_view, name='room-create'),
+    path('about/', about),
     path('rooms/', include('room.urls')),
 ]

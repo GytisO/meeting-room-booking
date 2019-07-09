@@ -1,6 +1,7 @@
 from django.http import HttpResponse
 from django.shortcuts import render
 from django.template.loader import get_template
+from .forms import CreateRoomForm
 
 
 def home_page(request):
@@ -11,9 +12,20 @@ def home_page(request):
     return render(request, "home.html", context)
 
 
+# def about(request):
+#     title = "about"
+#     return render(request, "about.html", {"title": title})
+
 def about(request):
-    title = "about"
-    return render(request, "about.html", {"title": title})
+    form = CreateRoomForm(request.POST or None)
+    if form.is_valid():
+        print(form.cleaned_data)
+        form = CreateRoomForm()
+    context = {
+        "title": "Create new room",
+        "form": form
+    }
+    return render(request, "about.html", context)
 
 
 def rooms(request):

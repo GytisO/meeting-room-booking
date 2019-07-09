@@ -38,6 +38,7 @@ INSTALLED_APPS = [  # components
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'room',
+
 ]
 
 MIDDLEWARE = [

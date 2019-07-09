@@ -1,4 +1,11 @@
 {% extends 'base.html' %}
+
     {% block content %}
-    <h1> {{ title }}</h1>
+    <form method="POST" action="."> {% csrf_token %}
+        {{ form.as_ul }}
+        {% comment %} <input type="number" name="room_number" placeholder="Room number">
+        <input type="number" name="capacity" placeholder="Capacity"> {% endcomment %}
+        <button type="submit">Create</button>
+    </form>
+
     {% endblock  %}

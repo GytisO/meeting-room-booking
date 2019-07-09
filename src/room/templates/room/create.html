@@ -1,7 +1,9 @@
 {% extends 'base.html' %}
 
-{% block content %}
-<h1>Create new meeting room:</h1>
-<h1>Meeting room number: {{ object.room_number }}</h1>
-<h2>Capacity of the room: {{ object.capacity }}</h2>
-{% endblock content %}
+    {% block content %}
+    <form method="POST" action="."> {% csrf_token %}
+        {{ form.as_ul }}
+        <button type="submit">Create</button>
+    </form>
+
+    {% endblock  %}

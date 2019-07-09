@@ -3,6 +3,7 @@ from django.http import Http404
 
 # Create your views here.
 from .models import MeetingRoom
+from .forms import CreateRoomForm
 
 
 # def meeting_room_detail_page(request, room_number):
@@ -34,12 +35,16 @@ def room_list_view(request):
 
 
 def room_create_view(request):
-    # use form
-    title = "Create new meeting room"
     template_name = 'room/create.html'
+    form = CreateRoomForm(request.POST or None)
+    if form.is_valid():
+        obj = MeetingRoom.objects.create(**form.cleaned_data)
+
+        print(form.cleaned_data)
+        form = CreateRoomForm()
     context = {
-        'title': title,
-        'form': None
+        "title": "Create new room",
+        "form": form
     }
     return render(request, template_name, context)
 

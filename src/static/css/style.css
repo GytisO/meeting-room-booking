@@ -43,3 +43,7 @@ a:hover {
 .jumbotron h1 {
   color: white;
 }
+
+form li {
+  list-style: none;
+}

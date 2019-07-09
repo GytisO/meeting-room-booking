@@ -1,9 +1,13 @@
 {% extends 'base.html' %}
 
 {% block content %}
+    <div>
+        <div class="container">
+            <a href='create/' class="btn btn-primary">New Room</a>
+        </div> 
+    </div>
 <div class="content">
 {% for instance in object_list %}
-
 
     <div class="card" style="width: 18rem;">
     <img src="{{ instance.image }}" class="card-img-top" href='{{ instance.get_absolute_url }}'>
