@@ -1,3 +1,4 @@
+from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, get_object_or_404
 from django.http import Http404
 
@@ -34,6 +35,7 @@ def room_list_view(request):
     return render(request, template_name, context)
 
 
+@login_required
 def room_create_view(request):
     template_name = 'room/create.html'
     form = CreateRoomModelForm(request.POST or None)
