@@ -3,7 +3,10 @@
 {% block content %}
 <h1>Are you sure you want to delete {{ object.room_number }}?</h1>
 <div class=container>
-    <button type="button" class="btn btn-danger">Yes</button>
-    <button type="button" class="btn btn-success">Cancel</button>
+    <form method="POST"> {% csrf_token %}
+        <button type="submit" class="btn btn-danger">Yes</button>
+    </form>
+        {% comment %} <button type="button" class="btn btn-success">Cancel</button> {% endcomment %}
+
 </div>
 {% endblock content %}

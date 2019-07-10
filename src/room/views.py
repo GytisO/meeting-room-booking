@@ -1,5 +1,5 @@
 from django.contrib.auth.decorators import login_required
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, get_object_or_404, redirect
 from django.http import Http404
 
 # Create your views here.
@@ -41,8 +41,10 @@ def room_create_view(request):
     form = CreateRoomModelForm(request.POST or None)
     if form.is_valid():
         # obj = MeetingRoom.objects.create(**form.cleaned_data)
+        form.user = request.user
         form.save()
         form = CreateRoomModelForm()
+        return redirect('/rooms')
     context = {
         "title": "Create new room",
         "form": form
@@ -61,22 +63,32 @@ def room_detail_view(request, room_number):
     return render(request, template_name, context)
 
 
+@login_required
 def room_update_view(request, room_number):
     title = "Updating " + str(room_number) + " meeting room"
     obj = get_object_or_404(MeetingRoom, room_number=room_number)
-    template_name = 'room/update.html'
+    form = CreateRoomModelForm(request.POST or None, instance=obj)
+    if form.is_valid():
+        form.save()
+        return redirect('/rooms')
+    template_name = 'room/create.html'
     context = {
         'title': title,
         'object': obj,
-        'form': None,
+        'form': form,
     }
+    # redirect('room/list.html')
     return render(request, template_name, context)
 
 
+@login_required
 def room_delete_view(request, room_number):
     title = "Deleting " + str(room_number) + " meeting room"
     obj = get_object_or_404(MeetingRoom, room_number=room_number)
     template_name = 'room/delete.html'
+    if request.method == "POST":
+        obj.delete()
+        return redirect('/rooms')
     context = {
         'title': title,
         'object': obj

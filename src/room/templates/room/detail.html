@@ -6,4 +6,7 @@
 {% block content %}
 <h1>Meeting room number: {{ object.room_number }}</h1>
 <h2>Capacity of the room: {{ object.capacity }}</h2>
+        <a href=' {% url 'room-update' object.room_number %} ' class="btn btn-primary">Update</a>
+        <a href=' {% url 'room-delete' object.room_number %} ' class="btn btn-danger">Delete</a>
+
 {% endblock content %}
