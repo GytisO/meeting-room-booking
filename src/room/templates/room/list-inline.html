@@ -1,0 +1,9 @@
+    <div class="card" style="width: 18rem;">
+    <img src="{{ meeting_room.image }}" class="card-img-top" href='{{ meeting_room.get_absolute_url }}'>
+        <div class="card-body">
+            <h5 class="card-title">{{ meeting_room.room_number }}</h5>
+            {% comment %} <p class="card-text">{{ meeting_room.capacity }}</p> {% endcomment %}
+            {% comment %} <a href='{{ meeting_room.get_absolute_url }}' class="btn btn-primary">{{ meeting_room.room_number }}</a> {% endcomment %}
+            <a href='{{ meeting_room.get_absolute_url }}' class="btn btn-primary">Details</a>
+        </div>
+    </div>
