@@ -1,14 +1,20 @@
 from django.http import HttpResponse
-from django.shortcuts import render
 from django.template.loader import get_template
 from .forms import CreateRoomForm
+from .forms import ReservationForm
+from room.models import MeetingRoom
+from django.contrib.auth.decorators import login_required
+from django.shortcuts import render, get_object_or_404, redirect
 
 
 def home_page(request):
+    objectlist = MeetingRoom.objects.all()
+    reservation_date = ReservationForm(request.POST or None)
     title = "Home"
     context = {"title": title}
     if request.user.is_authenticated:
-        context = {"title": title, "my_list": [1, 2, 3, 4, 5, 6]}
+        context = {"title": title, "my_list": [
+            1, 2, 3, 4, 5, 6], "objectlist": objectlist, "reservation_date": reservation_date}
     return render(request, "home.html", context)
 
 
@@ -16,13 +22,16 @@ def home_page(request):
 #     title = "about"
 #     return render(request, "about.html", {"title": title})
 
+@login_required
 def about(request):
-    form = CreateRoomForm(request.POST or None)
+    form = ReservationForm(request.POST or None)
     if form.is_valid():
-        print(form.cleaned_data)
-        form = CreateRoomForm()
+        form.user = request.user
+        # form.save()
+        form = ReservationForm()
+        return redirect('/')
     context = {
-        "title": "Create new room",
+        "title": "Create new reservation",
         "form": form
     }
     return render(request, "about.html", context)

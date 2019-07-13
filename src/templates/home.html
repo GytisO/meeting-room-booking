@@ -4,10 +4,18 @@
     {{ title }}
     </h1>
     {{ user }}
-    {{ user.is_authenticated }}
-    {% for item in my_list %}
-        <li>
-        {{ item }}
-        </li>
+    <div class="container">
+    <select>
+    {{ reservation_date }}
+    </select>
+    </div>
+    <div class="container">
+    <h3>Meeting room number: </h3>
+    <select>
+    {% for element in objectlist %}
+    <option value={{ element.id }}>{{ element.room_number }}
     {% endfor %}
+    </select>
+    </div>
+
 {% endblock content %}

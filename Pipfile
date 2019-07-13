@@ -10,6 +10,7 @@ django = "*"
 djongo = "*"
 dnspython = "*"
 requests = "*"
+djangorestframework = "*"
 
 [requires]
 python_version = "3.7"
