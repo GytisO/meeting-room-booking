@@ -39,7 +39,9 @@ INSTALLED_APPS = [  # components
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'room',
-
+    'rest_framework',
+    'reservation',
+    'API',
 ]
 
 MIDDLEWARE = [

@@ -13,6 +13,7 @@ class MeetingRoom(models.Model):
                              on_delete=models.SET_NULL)
     room_number = models.IntegerField(unique=True, blank=False)
     capacity = models.IntegerField(blank=False)
+    # models.One
 
     def get_absolute_url(self):
         return reverse('room-details', kwargs={'room_number': self.room_number})

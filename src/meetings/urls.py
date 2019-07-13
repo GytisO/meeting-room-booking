@@ -28,4 +28,5 @@ urlpatterns = [
     path('rooms/create/', room_create_view, name='room-create'),
     path('about/', about),
     path('rooms/', include('room.urls')),
+    path('api/', include('API.urls')),
 ]
