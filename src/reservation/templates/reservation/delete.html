@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>Are you sure you want to delete {{ object.r_number }}?</h1>
+<div class=container>
+    <form method="POST"> {% csrf_token %}
+        <button type="submit" class="btn btn-danger">Yes</button>
+    </form>
+        {% comment %} <button type="button" class="btn btn-success">Cancel</button> {% endcomment %}
+
+</div>
+{% endblock content %}

@@ -1,0 +1,12 @@
+    <div class="card" style="width: 18rem;">
+    <img src="{{ reservation.image }}" class="card-img-top" href='{{ reservation.get_absolute_url }}'>
+        <div class="card-body">
+            <h5 class="card-title">{{ reservation.r_number }}</h5>
+
+            <p></p>
+            <p></p>
+            {% comment %} <p class="card-text">{{ reservation.capacity }}</p> {% endcomment %}
+            {% comment %} <a href='{{ reservation.get_absolute_url }}' class="btn btn-primary">{{ reservation.r_number }}</a> {% endcomment %}
+            <a href='{{ reservation.get_absolute_url }}' class="btn btn-primary">Details</a>
+        </div>
+    </div>

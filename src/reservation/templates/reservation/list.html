@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <div>
+        <div class="container">
+            <a href='create/' class="btn btn-primary">New Room</a>
+        </div> 
+    </div>
+<div class="content">
+{% for object in object_list %}
+
+        {% include  'reservation/list-inline.html' with reservation=object %}
+
+{% endfor %}
+{% endblock content %}
+
+
+</div>

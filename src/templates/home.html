@@ -1,9 +1,14 @@
 {% extends 'base.html' %}
 {% block content %}
-    <h1>
-    {{ title }}
-    </h1>
-    {{ user }}
+
+    <h3> Logged in as: {{ user }}</h3>
+
+{% if request.user.is_authenticated %}
+    <div class="container">
+    <select>
+    {{ users }}
+    </select>
+    </div>
     <div class="container">
     <select>
     {{ reservation_date }}
@@ -13,9 +18,10 @@
     <h3>Meeting room number: </h3>
     <select>
     {% for element in objectlist %}
-    <option value={{ element.id }}>{{ element.room_number }}
+    <option value={{ element.id }}>{{ element.room_number }} - {{ element.capacity }}
     {% endfor %}
     </select>
     </div>
+{% endif %}
 
 {% endblock content %}

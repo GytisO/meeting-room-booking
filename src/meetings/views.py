@@ -10,8 +10,11 @@ from django.shortcuts import render, get_object_or_404, redirect
 def home_page(request):
     objectlist = MeetingRoom.objects.all()
     reservation_date = ReservationForm(request.POST or None)
+    if reservation_date.is_valid():
+        reservation_date.user = request.user
+        reservation_date = ReservationForm()
     title = "Home"
-    context = {"title": title}
+    context = {"title": "You have to be logged in"}
     if request.user.is_authenticated:
         context = {"title": title, "my_list": [
             1, 2, 3, 4, 5, 6], "objectlist": objectlist, "reservation_date": reservation_date}
@@ -27,8 +30,8 @@ def about(request):
     form = ReservationForm(request.POST or None)
     if form.is_valid():
         form.user = request.user
-        # form.save()
-        form = ReservationForm()
+        form.save()
+        # form = ReservationForm()
         return redirect('/')
     context = {
         "title": "Create new reservation",
