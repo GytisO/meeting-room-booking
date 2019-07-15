@@ -27,14 +27,15 @@ def reservation_create_view(request):
     form = CreateReservationModelForm(request.POST or None)
     if form.is_valid():
         form.user = request.user
+        data = request.POST.copy()
         client = APIClient()
-        client.post('/reservations', {'r_number': r_number, 'r_date': r_date,
-                                      'r_time': r_time, 'r_duration': r_duration}, format='json')
-        # requests.post('http://localhost:8000/api/reservation/', data={
-        #               'r_number': r_number, 'r_date': r_date, 'r_time': r_time, 'r_duration': r_duration})
+        client.post('http://localhost:8000/api/reservation/', {'r_number': data.get('id_r_number'), 'r_date': data.get(
+            'id_r_date'), 'r_time': data.get('id_r_time'), 'r_duration': data.get('id_r_duration')}, format='json')
+        # requests.post('http://localhost:8000/api/reservation/', data={'r_number': data.get('id_r_number'), 'r_date': data.get(
+        #     'id_r_date'), 'r_time': data.get('id_r_time'), 'r_duration': data.get('id_r_duration')})
         # form.save()
         # form = ReservationForm()
-        return redirect('/reservations')
+        return redirect('/reservations/')
     context = {
         "title": "Create new reservation",
         "form": form

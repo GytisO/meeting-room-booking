@@ -25,7 +25,7 @@ SECRET_KEY = 'urg1q5o(6y=9sssrduu79_p^)*#0+v+cjdvs$^j)40y(a))-cq'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['testserver', 'localhost']
 
 LOGIN_URL = '/login'
 
