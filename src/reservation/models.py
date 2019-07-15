@@ -13,7 +13,7 @@ RoomNumber = MeetingRoom.room_number
 class Reservation(models.Model):
     r_user = models.ForeignKey(User, default=1, null=True,
                                on_delete=models.SET_NULL)
-    r_number = models.IntegerField(blank=False)
+    r_number = models.IntegerField()
     # r_number = models.OneToOneField(
     #     MeetingRoom, on_delete=models.SET_NULL, null=True)
     r_date = models.DateField()

@@ -1,6 +1,8 @@
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, get_object_or_404, redirect
 from django.http import Http404
+import requests
+from rest_framework.test import APIClient
 
 # Create your views here.
 from .models import Reservation
@@ -22,10 +24,15 @@ def reservation_list_view(request):
 @login_required
 def reservation_create_view(request):
     template_name = 'reservation/create.html'
-    form = Reservation(request.POST or None)
+    form = CreateReservationModelForm(request.POST or None)
     if form.is_valid():
         form.user = request.user
-        form.save()
+        client = APIClient()
+        client.post('/reservations', {'r_number': r_number, 'r_date': r_date,
+                                      'r_time': r_time, 'r_duration': r_duration}, format='json')
+        # requests.post('http://localhost:8000/api/reservation/', data={
+        #               'r_number': r_number, 'r_date': r_date, 'r_time': r_time, 'r_duration': r_duration})
+        # form.save()
         # form = ReservationForm()
         return redirect('/reservations')
     context = {
@@ -36,7 +43,7 @@ def reservation_create_view(request):
 
 
 def reservation_detail_view(request, r_number):
-    title = "Details of " + str(room_number) + " meeting room"
+    title = "Details of " + str(r_number) + " meeting room"
     obj = get_object_or_404(Reservation, r_number=r_number)
     template_name = 'reservation/detail.html'
     context = {
@@ -47,9 +54,9 @@ def reservation_detail_view(request, r_number):
 
 
 @login_required
-def reservation_update_view(request, room_number):
-    title = "Updating " + str(room_number) + " room reservation"
-    obj = get_object_or_404(MeetingRoom, room_number=room_number)
+def reservation_update_view(request, r_number):
+    title = "Updating " + str(r_number) + " room reservation"
+    obj = get_object_or_404(Reservation, r_number=r_number)
     form = CreateReservationModelForm(request.POST or None, instance=obj)
     if form.is_valid():
         form.save()
@@ -65,8 +72,8 @@ def reservation_update_view(request, room_number):
 
 @login_required
 def reservation_delete_view(request, r_number):
-    title = "Deleting " + str(room_number) + " meeting room"
-    obj = get_object_or_404(MeetingRoom, r_number=r_number)
+    title = "Deleting " + str(r_number) + " meeting room"
+    obj = get_object_or_404(Reservation, r_number=r_number)
     template_name = 'reservation/delete.html'
     if request.method == "POST":
         obj.delete()
