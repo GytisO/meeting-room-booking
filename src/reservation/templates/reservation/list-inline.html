@@ -1,7 +1,10 @@
     <div class="card" style="width: 18rem;">
     <img src="{{ reservation.image }}" class="card-img-top" href='{{ reservation.get_absolute_url }}'>
         <div class="card-body">
-            <h5 class="card-title">{{ reservation.r_number }}</h5>
+            <h5 class="card-title">Meeting room: {{ reservation.r_number }}</h5>
+            <h5 class="card-title">{{ reservation.r_date }}</h5>
+            <h5 class="card-title"> from: {{ reservation.r_time }} for: {{ reservation.r_duration }} h</h5>
+
 
             <p></p>
             <p></p>

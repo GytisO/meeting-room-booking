@@ -1,9 +1,11 @@
 from django import forms
-from .models import MeetingRoom
+# from .models import MeetingRoom
+from API.models import MeetingRoom
 
 
 class CreateRoomForm(forms.Form):
-    room_number = forms.IntegerField()
+    # room_number = forms.IntegerField()
+    room_number = forms.ModelChoiceField(queryset=MeetingRoom.objects.all())
     capacity = forms.IntegerField()
 
 

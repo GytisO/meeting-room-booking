@@ -2,7 +2,8 @@
 
 {% block content %}
 <h1>Meeting room number: {{ object.r_number }}</h1>
-<h2>Capacity of the room: {{ object.r_date }}</h2>
+<h2>Reservation date: {{ object.r_date }}</h2>
+<h2>Reservation time: {{ object.r_time }}</h2>
 {% if request.user.is_authenticated %}
         <a href=' {% url 'reservation-update' object.r_number %} ' class="btn btn-primary">Update</a>
         <a href=' {% url 'reservation-delete' object.r_number %} ' class="btn btn-danger">Delete</a>

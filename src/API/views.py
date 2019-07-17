@@ -1,6 +1,7 @@
 from django.contrib.auth.models import User, Group
-from room.models import MeetingRoom
-from reservation.models import Reservation
+# from room.models import MeetingRoom
+from .models import MeetingRoom, Reservation
+# from reservation.models import Reservation
 from rest_framework import viewsets
 from .serializers import UserSerializer, ReservationSerializer, RoomSerializer
 

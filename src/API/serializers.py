@@ -2,8 +2,10 @@ from django.contrib.auth.models import User, Group
 from django.db.models.fields import DateField, DurationField, TimeField
 from rest_framework import serializers
 from django.contrib.auth import get_user_model
-from room.models import MeetingRoom
-from reservation.models import Reservation
+# from room.models import MeetingRoom
+# from reservation.models import Reservation
+
+from .models import MeetingRoom, Reservation
 
 
 User = get_user_model()
@@ -44,20 +46,25 @@ class RoomSerializer(serializers.ModelSerializer):
     class Meta:
         model = MeetingRoom
         fields = [
+            'url',
+            'id',
             'room_number',
             'capacity'
         ]
 
 
 class ReservationSerializer(serializers.ModelSerializer):
-    r_number = serializers.IntegerField()
-    r_date = serializers.DateField()
-    r_time = serializers.TimeField()
-    r_duration = DurationField()
+    # r_number = serializers.IntegerField()
+    # r_number = serializers.ChoiceField(MeetingRoom)
+    # r_date = serializers.DateField()
+    # r_time = serializers.TimeField()
+    # r_duration = DurationField()
 
     class Meta:
         model = Reservation
         fields = [
+            'url',
+            'id',
             'r_number',
             'r_date',
             'r_time',

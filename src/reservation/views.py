@@ -5,7 +5,9 @@ import requests
 from rest_framework.test import APIClient
 
 # Create your views here.
-from .models import Reservation
+# from .models import Reservation
+from API.models import Reservation
+
 from .forms import CreateReservationModelForm
 
 
