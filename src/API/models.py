@@ -20,17 +20,17 @@ class MeetingRoom(models.Model):
 
 
 class Reservation(models.Model):
-    # reservation_number = models.AutoField(primary_key=True)
-    r_user = models.ForeignKey(User, default=1, null=True,
-                               on_delete=models.SET_NULL)
-    r_number = models.ForeignKey(
+    id: models.AutoField(auto_created=True, primary_key=True)
+    reservation_user = models.ForeignKey(User, default=1, null=True,
+                                         on_delete=models.SET_NULL)
+    room_number = models.ForeignKey(
         MeetingRoom, on_delete=models.SET_NULL, null=True)
-    r_date = models.DateField()
-    r_time = models.TimeField()
-    r_duration = models.DurationField()
+    reservation_date = models.DateField()
+    reservation_time = models.TimeField()
+    reservation_duration = models.DurationField()
 
-    # def __str__(self):
-    #     return self.name
+    def __str__(self):
+        return self.room_number
 
     def get_absolute_url(self):
-        return reverse('reservation-details', kwargs={'r_number': self.r_number})
+        return reverse('reservation-details', kwargs={'id': self.id})

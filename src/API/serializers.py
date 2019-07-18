@@ -47,27 +47,26 @@ class RoomSerializer(serializers.ModelSerializer):
         model = MeetingRoom
         fields = [
             'url',
-            'id',
             'room_number',
             'capacity'
         ]
 
 
 class ReservationSerializer(serializers.ModelSerializer):
-    # r_number = serializers.IntegerField()
-    # r_number = serializers.ChoiceField(MeetingRoom)
-    # r_date = serializers.DateField()
-    # r_time = serializers.TimeField()
-    # r_duration = DurationField()
+
+    # room_number = serializers.ChoiceField(MeetingRoom)
+    # reservation_date = serializers.DateField()
+    # reservation_time = serializers.TimeField()
+    # reservation_duration = DurationField()
 
     class Meta:
         model = Reservation
         fields = [
             'url',
+            'room_number',
+            'reservation_date',
+            'reservation_time',
+            'reservation_duration',
+            'reservation_user',
             'id',
-            'r_number',
-            'r_date',
-            'r_time',
-            'r_duration',
-            'r_user',
         ]

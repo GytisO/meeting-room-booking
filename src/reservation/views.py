@@ -3,11 +3,8 @@ from django.shortcuts import render, get_object_or_404, redirect
 from django.http import Http404
 import requests
 from rest_framework.test import APIClient
-
-# Create your views here.
-# from .models import Reservation
+from rest_framework.test import APIRequestFactory
 from API.models import Reservation
-
 from .forms import CreateReservationModelForm
 
 
@@ -30,13 +27,11 @@ def reservation_create_view(request):
     if form.is_valid():
         form.user = request.user
         data = request.POST.copy()
-        client = APIClient()
-        client.post('http://localhost:8000/api/reservation/', {'r_number': data.get('id_r_number'), 'r_date': data.get(
-            'id_r_date'), 'r_time': data.get('id_r_time'), 'r_duration': data.get('id_r_duration')}, format='json')
-        # requests.post('http://localhost:8000/api/reservation/', data={'r_number': data.get('id_r_number'), 'r_date': data.get(
-        #     'id_r_date'), 'r_time': data.get('id_r_time'), 'r_duration': data.get('id_r_duration')})
-        # form.save()
-        # form = ReservationForm()
+        print(form.user)
+        print(data)
+        factory = APIRequestFactory()
+        factory.post('http://localhost:8000/api/reservations/', {'room_number': 'id_room_number', 'reservation_date':
+                                                                 'id_reservation_date', 'reservation_time': 'id_reservation_time', 'reservation_duration': 'id_reservation_duration'}, format='json')
         return redirect('/reservations/')
     context = {
         "title": "Create new reservation",
@@ -45,9 +40,9 @@ def reservation_create_view(request):
     return render(request, template_name, context)
 
 
-def reservation_detail_view(request, r_number):
-    title = "Details of " + str(r_number) + " meeting room"
-    obj = get_object_or_404(Reservation, r_number=r_number)
+def reservation_detail_view(request, id, *room_number):
+    title = "Details of " + str(room_number) + " meeting room"
+    obj = get_object_or_404(Reservation, id=id)
     template_name = 'reservation/detail.html'
     context = {
         'title': title,
@@ -57,9 +52,9 @@ def reservation_detail_view(request, r_number):
 
 
 @login_required
-def reservation_update_view(request, r_number):
-    title = "Updating " + str(r_number) + " room reservation"
-    obj = get_object_or_404(Reservation, r_number=r_number)
+def reservation_update_view(request, *room_number, id):
+    title = "Updating " + str(room_number) + " room reservation"
+    obj = get_object_or_404(Reservation, id=id)
     form = CreateReservationModelForm(request.POST or None, instance=obj)
     if form.is_valid():
         form.save()
@@ -74,9 +69,9 @@ def reservation_update_view(request, r_number):
 
 
 @login_required
-def reservation_delete_view(request, r_number):
-    title = "Deleting " + str(r_number) + " meeting room"
-    obj = get_object_or_404(Reservation, r_number=r_number)
+def reservation_delete_view(request, room_number, id):
+    title = "Deleting " + str(room_number) + " meeting room"
+    obj = get_object_or_404(Reservation, id=id)
     template_name = 'reservation/delete.html'
     if request.method == "POST":
         obj.delete()

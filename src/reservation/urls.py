@@ -4,10 +4,10 @@ from .views import reservation_create_view, reservation_detail_view, reservation
 
 urlpatterns = [
     path('', reservation_list_view, name='reservation-list'),
-    path('<int:r_number>/', reservation_detail_view, name='reservation-details'),
-    path('<int:r_number>/update/',
+    path('<int:id>/', reservation_detail_view, name='reservation-details'),
+    path('<int:id>/update/',
          reservation_update_view, name='reservation-update'),
-    path('<int:r_number>/delete/',
+    path('<int:id>/delete/',
          reservation_delete_view, name='reservation-delete'),
     path('create/', reservation_create_view, name='reservation-create'),
 ]

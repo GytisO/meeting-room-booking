@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<h1>Are you sure you want to delete {{ object.r_number }} reservation?</h1>
+<h1>Are you sure you want to delete {{ object.room_number }} reservation?</h1>
 <div class=container>
     <form method="POST"> {% csrf_token %}
         <button type="submit" class="btn btn-danger">Yes</button>
