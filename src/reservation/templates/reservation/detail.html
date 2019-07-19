@@ -4,7 +4,7 @@
 <h1>Meeting room number: {{ object.room_number }}</h1>
 <h2>Reservation date: {{ object.reservation_date }}</h2>
 <h2>Reservation time: {{ object.reservation_time }}</h2>
-{% if request.user.is_authenticated %}
+{% if request.user.is_authenticated and request.user == object.reservation_user %}
         <a href=' {% url 'reservation-update' object.id %} ' class="btn btn-primary">Update</a>
         <a href=' {% url 'reservation-delete' object.id %} ' class="btn btn-danger">Delete</a>
 {% endif %}

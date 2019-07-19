@@ -1,4 +1,5 @@
 from django.contrib.auth.decorators import login_required
+from django.views.decorators.csrf import csrf_exempt
 from django.shortcuts import render, get_object_or_404, redirect
 from django.http import Http404
 import requests
@@ -21,18 +22,22 @@ def reservation_list_view(request):
 
 
 @login_required
+@csrf_exempt
 def reservation_create_view(request):
     template_name = 'reservation/create.html'
     form = CreateReservationModelForm(request.POST or None)
     if form.is_valid():
         form.user = request.user
+        user = str(form.user)
         data = request.POST.copy()
         print(form.user)
         print(data)
+
         factory = APIRequestFactory()
-        factory.post('http://localhost:8000/api/reservations/', {'room_number': 'id_room_number', 'reservation_date':
-                                                                 'id_reservation_date', 'reservation_time': 'id_reservation_time', 'reservation_duration': 'id_reservation_duration'}, format='json')
-        return redirect('/reservations/')
+        factory.post('http://localhost:8000/api/reservations/', {'room_number': data['room_number'], 'reservation_date':
+                                                                 data['reservation_date'], 'reservation_time': data['reservation_time'], 'reservation_duration': data['reservation_duration'], 'reservation_user': user}, format='json')
+        # return redirect('/reservations/')
+        print(factory.post)
     context = {
         "title": "Create new reservation",
         "form": form
