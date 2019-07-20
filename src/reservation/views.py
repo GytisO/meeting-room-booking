@@ -2,24 +2,25 @@ from django.contrib.auth.decorators import login_required
 from django.views.decorators.csrf import csrf_exempt
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
-
 from django.shortcuts import render, get_object_or_404, redirect
 from django.http import Http404
 import requests
-from rest_framework.test import APIClient
-from rest_framework.test import APIRequestFactory
 from API.models import Reservation
 from .forms import CreateReservationModelForm
+
+from django.contrib.auth.models import User
 
 
 def reservation_list_view(request):
     queryset = Reservation.objects.all()
+    user_list = User.objects.all()
     title = "Reservations list"
     # queryset = MeetingRoom.objects.filter(room_number=201) - veikia kaip filtras
     template_name = 'reservation/list.html'
     context = {
         'title': title,
-        'object_list': queryset
+        'object_list': queryset,
+        'user_list': user_list
     }
     return render(request, template_name, context)
 

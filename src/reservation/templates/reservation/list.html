@@ -9,6 +9,14 @@
 <div class="content">
 {% comment %} <ul class="list-group col-6"> {% endcomment %}
 
+<div>
+    <select>
+    {% for element in user_list %}
+    <option value={{ element.username }}>{{ element.username }}
+    {% endfor %}
+    </select>
+</div>
+
 <table class="table">
     <thead>
     <tr>
