@@ -16,7 +16,11 @@
         <td>{{ reservation.reservation_duration }}</td>
         <td>{{ reservation.reservation_user }}</td>
         {% if request.user.is_authenticated and request.user == object.reservation_user %}
-        <td><a href='{{ reservation.get_absolute_url }}' class="btn btn-primary">Details</a></td>
+        {% comment %} <td><a href='{{ reservation.get_absolute_url }}' class="btn btn-primary">Edit</a></td> {% endcomment %}
+        <td>
+        <a href=' {% url 'reservation-update' object.id %} ' class="btn btn-primary">Update</a>
+        <a href=' {% url 'reservation-delete' object.id %} ' class="btn btn-danger">Delete</a>
+        </td>
         {% endif %}
     </tr>
 
