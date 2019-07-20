@@ -47,3 +47,8 @@ a:hover {
 form li {
   list-style: none;
 }
+
+.filter-slct {
+  height: 2.5rem;
+  width: 10rem;
+}

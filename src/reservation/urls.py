@@ -10,4 +10,7 @@ urlpatterns = [
     path('<int:id>/delete/',
          reservation_delete_view, name='reservation-delete'),
     path('create/', reservation_create_view, name='reservation-create'),
+    #     filter url path
+    #     path('', reservation_list_view, name='reservation-list'),
+
 ]

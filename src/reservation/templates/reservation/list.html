@@ -1,31 +1,30 @@
 {% extends 'base.html' %}
 
 {% block content %}
-    <div>
-        <div class="container">
+    <div class='row my-5 d-flex justify-content-between'>
+        <form method='GET'>
+            <select class="filter-slct">
+            {% for element in user_list %}
+            <option value={{ user.id }}>{{ element.username }}
+            {% endfor %}
+            </select>
+            <a href='' class="btn btn-primary" value="{{ user.id }}">Filter</a>
+        </form>
+        <div>
             <a href='create/' class="btn btn-primary">New Reservation</a>
         </div> 
     </div>
+
 <div class="content">
-{% comment %} <ul class="list-group col-6"> {% endcomment %}
-
-<div>
-    <select>
-    {% for element in user_list %}
-    <option value={{ element.username }}>{{ element.username }}
-    {% endfor %}
-    </select>
-</div>
-
 <table class="table">
     <thead>
     <tr>
-        <th scope="col">Room number</th>
-        <th scope="col">Date</th>
-        <th scope="col">Time</th>
-        <th scope="col">Duration</th>
-        <th scope="col">Reserved by</th>
-        <th scope="col">Details</th>
+        <th scope="col" class="align-middle">Room number</th>
+        <th scope="col" class="align-middle">Date</th>
+        <th scope="col" class="align-middle">Time</th>
+        <th scope="col" class="align-middle">Duration</th>
+        <th scope="col" class="align-middle">Reserved by</th>
+        <th scope="col" class="align-middle">Details</th>
     </tr>
     </thead>
     <tbody>
@@ -38,16 +37,4 @@
     </tbody>
 
 </table>
-
-
-
-
-
-
-
-
-
-
-</ul>
-
 </div>
