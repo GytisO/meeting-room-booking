@@ -7,12 +7,39 @@
         </div> 
     </div>
 <div class="content">
-{% for object in object_list %}
+{% comment %} <ul class="list-group col-6"> {% endcomment %}
 
-        {% include  'reservation/list-inline.html' with reservation=object %}
+<table class="table">
+    <thead>
+    <tr>
+        <th scope="col">Room number</th>
+        <th scope="col">Date</th>
+        <th scope="col">Time</th>
+        <th scope="col">Duration</th>
+        <th scope="col">Reserved by</th>
+        <th scope="col">Details</th>
+    </tr>
+    </thead>
+    <tbody>
+        {% for object in object_list %}
 
-{% endfor %}
-{% endblock content %}
+            {% include  'reservation/list-inline.html' with reservation=object %}
 
+        {% endfor %}
+        {% endblock content %}
+    </tbody>
+
+</table>
+
+
+
+
+
+
+
+
+
+
+</ul>
 
 </div>
