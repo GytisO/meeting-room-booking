@@ -27,7 +27,7 @@ DEBUG = True
 
 ALLOWED_HOSTS = ['testserver', 'localhost']
 
-LOGIN_URL = '/login'
+LOGIN_URL = '/user/login'
 
 # Application definition
 
@@ -40,8 +40,10 @@ INSTALLED_APPS = [  # components
     'django.contrib.staticfiles',
     'room',
     'rest_framework',
+    'rest_framework.authtoken',
     'reservation',
     'API',
+    'user',
 ]
 
 MIDDLEWARE = [

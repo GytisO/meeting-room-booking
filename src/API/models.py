@@ -34,3 +34,9 @@ class Reservation(models.Model):
 
     def get_absolute_url(self):
         return reverse('reservation-details', kwargs={'id': self.id})
+
+
+class User(models.Model):
+    username = models.CharField(max_length=100)
+    password = models.CharField(max_length=100)
+    email = models.EmailField(unique=True, max_length=100)
