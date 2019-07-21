@@ -33,10 +33,14 @@ def user_login_view(request):
     form = LoginUserModelForm(request.POST or None)
     if form.is_valid():
         if request.method == 'POST':
-            data = request.POST.copy()
-            print(data)
+            # data = request.POST.copy()
+            username = request.POST.get('username')
+            csrt_token = request.POST.get('csrfmiddlewaretoken')
+            password = request.POST.get('password')
+            # print(data)
+            print(csrt_token)
             response = requests.post(
-                'http://localhost:8000/api/api-auth/login/', data=data
+                'http://localhost:8000/api/api-auth/login/', data={'username': username, 'password': password}, headers={'csrftoken': csrt_token}, cookies={'csrftoken': csrt_token}
             )
             return redirect('/')
     context = {
