@@ -3,7 +3,6 @@ from django.shortcuts import render, get_object_or_404, redirect
 from django.http import Http404
 
 # Create your views here.
-# from .models import MeetingRoom
 from API.models import MeetingRoom
 from .forms import CreateRoomModelForm
 
