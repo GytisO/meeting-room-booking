@@ -12,5 +12,5 @@ App is designed to create users, meeting rooms and manage their reservations.
 
 
 At "Meeting rooms" you can create new, update and delete existing meeting room.
-At "Reservations" you maka and manage your reservations.
+At "Reservations" you make and manage your reservations.
 
