@@ -1,0 +1,29 @@
+[[source]]
+name = "pypi"
+url = "https://pypi.org/simple"
+verify_ssl = true
+
+[dev-packages]
+
+[packages]
+certifi ="*"
+chardet = "*"
+dataclasses = "*"
+dj-database-url = "*"
+django-heroku = "*"
+gunicorn = "*"
+idna = "*"
+psycopg2 = "*"
+pymongo = "*"
+pytz = "*"
+sqlparse = "*"
+django = "*"
+djongo = "*"
+dnspython = "*"
+requests = "*"
+djangorestframework = "*"
+urllib3 = "*"
+whitenoise = "*"
+
+[requires]
+python_version = "3.7"
