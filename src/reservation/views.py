@@ -10,9 +10,6 @@ from django.contrib.auth.models import User
 
 
 def reservation_list_view(request):
-    # if request.method == 'GET':
-        # queryset = Reservation.objects.filter(reservation_user=usr)
-    # else:
     queryset = Reservation.objects.all()
     user_list = User.objects.all()
     title = "Reservations list"
