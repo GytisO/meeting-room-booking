@@ -1,4 +1,5 @@
-# Meeting room booking app.
+# Meeting room booking app
+---
 
 before running django app recommend to create virtual environment `virtualenv -p python3 .` and install requirements.txt `pip install requirements.txt` or you can use pipenv `pipenv install <appname>` all dependecies are in Pipfile.
 ---
