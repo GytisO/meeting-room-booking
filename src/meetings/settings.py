@@ -26,7 +26,7 @@ SECRET_KEY = 'urg1q5o(6y=9sssrduu79_p^)*#0+v+cjdvs$^j)40y(a))-cq'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['testserver', 'localhost']
+ALLOWED_HOSTS = ['testserver', 'localhost', 'booking-case-task.herokuapp.com']
 
 LOGIN_URL = '/user/login'
 
@@ -55,6 +55,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
 ]
 
 ROOT_URLCONF = 'meetings.urls'
@@ -146,3 +147,7 @@ CSRF_COOKIE_SECURE = False
 
 # Activate Django-Heroku.
 django_heroku.settings(locals())
+
+import dj_database_url
+prod_db = dj_database_url.config(conn_max_age=500)
+DATABASES['default'].update(prod_db)
