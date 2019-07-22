@@ -7,23 +7,6 @@ from django.http import Http404
 from API.models import MeetingRoom
 from .forms import CreateRoomModelForm
 
-
-# def meeting_room_detail_page(request, room_number):
-#     obj = get_object_or_404(MeetingRoom, room_number=room_number)
-#     template_name = 'meeting_room_detail_page.html'
-#     context = {"object": obj}
-#     return render(request, template_name, context)
-
-
-# def meeting_room_list(request):
-#     queryset = MeetingRoom.objects.all()
-#     template_name = 'meeting_room_list.html'
-#     context = {
-#         'object_list': queryset
-#     }
-#     return render(request, template_name, context)
-
-
 def room_list_view(request):
     queryset = MeetingRoom.objects.all()
     title = "Meeting room list"
