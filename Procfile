@@ -1,1 +1,1 @@
-web: gunicorn meetings.wsgi
+web: gunicorn src.wsgi
