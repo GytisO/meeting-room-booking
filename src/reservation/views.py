@@ -5,12 +5,15 @@ from django.http import Http404
 import requests
 from API.models import Reservation
 from .forms import CreateReservationModelForm
-
 from django.contrib.auth.models import User
 
 
 def reservation_list_view(request):
-    queryset = Reservation.objects.all()
+    if request.GET.get('user-filter'):
+        user_filter = request.GET.get('user-filter')
+        queryset = Reservation.objects.filter(reservation_user=user_filter)
+    else:
+        queryset = Reservation.objects.all()
     user_list = User.objects.all()
     title = "Reservations list"
     template_name = 'reservation/list.html'

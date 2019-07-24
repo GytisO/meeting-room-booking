@@ -2,29 +2,29 @@
 
 {% block content %}
     <div class='row my-5 d-flex justify-content-between'>
-        <form method='GET'>
-            <select class="filter-slct">
+        <form method='GET' action='.'>
+            <select name='user-filter' class='filter-slct'>
             {% for element in user_list %}
             <option value={{ user.id }}>{{ element.username }}
             {% endfor %}
             </select>
-            <a href='' class="btn btn-primary" value="{{ user.id }}">Filter</a>
+            <input type='submit' class='btn btn-primary' value='Filter'>
         </form>
         <div>
-            <a href='create/' class="btn btn-primary">New Reservation</a>
+            <a href='create/' class='btn btn-primary'>New Reservation</a>
         </div> 
     </div>
 
-<div class="content">
-<table class="table">
+<div class='content'>
+<table class='table'>
     <thead>
     <tr>
-        <th scope="col" class="align-middle">Room number</th>
-        <th scope="col" class="align-middle">Date</th>
-        <th scope="col" class="align-middle">Time</th>
-        <th scope="col" class="align-middle">Duration</th>
-        <th scope="col" class="align-middle">Reserved by</th>
-        <th scope="col" class="align-middle">Details</th>
+        <th scope='col' class='align-middle'>Room number</th>
+        <th scope='col' class='align-middle'>Date</th>
+        <th scope='col' class='align-middle'>Time</th>
+        <th scope='col' class='align-middle'>Duration</th>
+        <th scope='col' class='align-middle'>Reserved by</th>
+        <th scope='col' class='align-middle'>Details</th>
     </tr>
     </thead>
     <tbody>

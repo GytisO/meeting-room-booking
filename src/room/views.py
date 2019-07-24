@@ -6,10 +6,11 @@ from django.http import Http404
 from API.models import MeetingRoom
 from .forms import CreateRoomModelForm
 
+
 def room_list_view(request):
     queryset = MeetingRoom.objects.all()
+    print(queryset)
     title = "Meeting room list"
-    # queryset = MeetingRoom.objects.filter(room_number=201) - veikia kaip filtras
     template_name = 'room/list.html'
     context = {
         'title': title,
@@ -23,7 +24,7 @@ def room_create_view(request):
     template_name = 'room/create.html'
     form = CreateRoomModelForm(request.POST or None)
     if form.is_valid():
-        # obj = MeetingRoom.objects.create(**form.cleaned_data)
+
         form.user = request.user
         form.save()
         form = CreateRoomModelForm()
@@ -60,7 +61,6 @@ def room_update_view(request, room_number):
         'object': obj,
         'form': form,
     }
-    # redirect('room/list.html')
     return render(request, template_name, context)
 
 
