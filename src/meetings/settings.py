@@ -39,12 +39,13 @@ INSTALLED_APPS = [  # components
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'room',
     'rest_framework',
     'rest_framework.authtoken',
+    'django_filters',
     'reservation',
     'API',
     'user',
+    'room',
 ]
 
 MIDDLEWARE = [
