@@ -10,7 +10,6 @@ class MeetingRoom(models.Model):
                              on_delete=models.SET_NULL)
     room_number = models.IntegerField(unique=True, blank=False)
     capacity = models.IntegerField(blank=False)
-    # models.One
 
     def __str__(self):
         return str(self.room_number)
