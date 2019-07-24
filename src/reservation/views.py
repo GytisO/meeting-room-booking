@@ -13,7 +13,6 @@ def reservation_list_view(request):
     queryset = Reservation.objects.all()
     user_list = User.objects.all()
     title = "Reservations list"
-    # queryset = MeetingRoom.objects.filter(room_number=201) - veikia kaip filtras
     template_name = 'reservation/list.html'
     context = {
         'title': title,
