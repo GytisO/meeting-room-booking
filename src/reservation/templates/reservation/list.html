@@ -5,7 +5,7 @@
         <form method='GET' action='.'>
             <select name='user-filter' class='filter-slct'>
             {% for element in user_list %}
-            <option value={{ user.id }}>{{ element.username }}
+            <option name='user-filter' value={{ user.id }}>{{ element.username }}
             {% endfor %}
             </select>
             <input type='submit' class='btn btn-primary' value='Filter'>
